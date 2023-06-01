@@ -62,7 +62,7 @@ function Gameboard() {
 
     function GetFreeSpace(nextGameboard,i){
         if(!finish){
-        if(nextGameboard[i] !=6){
+        if(nextGameboard[i] !==6){
             const RowID = nextGameboard[i];
             nextGameboard[i] = nextGameboard[i] +1;
             setGameBoard(nextGameboard);
@@ -135,7 +135,7 @@ function Gameboard() {
     };
 
     function handleClickButton(){
-        const gameClean = gameBoard.slice(); 
+
         console.log(gameBoard);
        
         for(let y = 0; y < numCols; y++){
@@ -161,6 +161,8 @@ function Gameboard() {
     return (
         <>
         <Scoreboard P1Score={ScoreP1} P2Score={ScoreP2}/>
+        <div> <p className="PlayerTurn" >Player <span style={!redIsNext ? { color: "#DAD400" } : { color: "#D50000" } }>{!redIsNext ? "Yellow" : "red" }</span>'S Turn</p></div>
+
       <div id="game-board">
         <Column idColumn = "column-0" data="0" onColumnClick={() => handleClick(0)}/>
         <Column idColumn = "column-1" data="1" onColumnClick={() => handleClick(1)}/>
@@ -170,7 +172,7 @@ function Gameboard() {
         <Column idColumn = "column-5" data="5" onColumnClick={() => handleClick(5)}/>
         <Column idColumn = "column-6" data="6" onColumnClick={() => handleClick(6)}/>
       </div>
-      <p className="Result" style={redIsNext ? { color: "dodgerblue" } : { color: "#ff4c4c" } }>{result}</p>
+      <p className="Result" style={redIsNext ? { color: "#D50000" } : { color: "#ff4c4c" } }>{result}</p>
       <Button finish={finish} onClick={() => handleClickButton()}/>
       </>
       
